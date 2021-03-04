@@ -1,13 +1,13 @@
 # Zeus-Bot-Info
 All information necessary for using Z E U S
 
-(Last updated on Match 3rd 2021)
+(Last updated on Match 4th 2021)
 
 ### Basic Info
 Z E U S is a custom discord bot made for Olympus server network. 
 Bot owner is A R E Z#9064 (174228239382740995). 
 Zeus is used in [Custom-Strike](https://discord.gg/6AbkcN8) and [Arez Kingdom](https://discord.gg/ywbNFy8).
-Zeus is used for syncing roles across all Olympus servers, storing roles in the database and easily assign/remove roles from users using commands.
+Zeus is used for syncing roles across all Olympus servers, storing roles in the database and assign/remove roles from users using commands.
 
 ### Structure
 
@@ -30,14 +30,17 @@ Permission level of each role allows to have a hierarchy system as mentioned abo
 
 *Note: permission level strucuture may be changed in the soon future*
 
-### !fullsync functionality
+### !fullsync 
 !fullsync is a powerful command which can only be done by certain users. !fullsync command deletes all roles on children servers (hence removing ALL channel permissions), copies roles from master server and creates them in all children servers. After that, bot goes through every user in the database and assigns their roles. This command also deletes all roles from user that don't have some/any roles in the database. This should only be done manually when needed.
 
-### !sync functionality
-!sync is a softer command compared to !fullsync. This command goes through each role in master server, and for each role finds its copy on children server *by name* (if you change a role name on children server, bot will skip the role and will neither delete it nor edit it), and if it was successfully found, edits all of its properties to the ones that are on master server. Then bot again goes through the database and assigns roles. This command doesn't delete roles from users that got assigned a role manually.
+### !sync 
+!sync is a softer command compared to !fullsync. This command goes through each role in master server, and for each role finds its copy on children server *by name* (if you change a role name on children server, bot will skip the role and will neither delete it nor edit it), and if it was successfully found, edits all of its properties to the ones that are on master server. Then bot again goes through the database and assigns roles. This command doesn't delete roles from users that got assigned a role manually. In the future, as all found bugs will be fixed, this command will run every 24 hours automatically
 
-### !syncUser functionality (prototype, may not work)
+### !syncUser \[mention / discord user ID]
+!syncUser accepts a valid mention or discord user ID as a paremeter. If paremeter is valid and if mentioned user exists in the database, sync user's roles in master server and in children servers (if user is present there);
 
+### !getUser \[mention / discord user ID]
+!getUser retrieves mention user from the database (if user is saved in the database) and shows roles that mentioned user has in the database.
 
 ### + / - commands
 Role assignment is main bot functionality. This command fully depends on role properties so make sure to read the **Role structure** paragraph above.
@@ -54,6 +57,18 @@ After that, bot checks if user has the permission to run this command. Executor 
 
 If command passed all tests, bots adds the user to the database if user wasn't present there, or modifies the user from the database with new roles. After database manipulation, a user sync is run again to assign newly modified roles only.
 
+### Other functionality
+- If a role is modified on master server, bot will automatically update it on all children servers
+- If a role is assigned through Discord interface, bot will delete the role from this user and identify it as "accidental" role assignment
+- !help command - A true revolution in bot developing - sends information about Zeus Bot.
+- Whenever a user message contains "crazymodder", bot pays respect to Crazy Modder and sends "you will be remembered" message
+
+### Important notes
+- Bot is not executing commands instantly, some commands may take up to 2 minutes to execute. Command runtime may increase as the bot grows. Please have patience when executing commands, spamming commands will NOT speed up command execution time, but can cause bot traffic overflow, temporary freezes or errors.
+- Discord is weird sometimes. Sometimes even if you mention a user, Discord doesn't send the information to the bot that the message actually had a mention, or sometimes say that provided discord ID is not valid. Discord may experience outage, then bot will try to identify this outage and skip the server if possible (when changing roles or syncing). As you might guess, I can't do anything about Discord weird behaviour. Please don't instantly DM me about it, but rather try it later (how much later? depends on the problem. If it's a server outage, a few hours - a day. If it's invalid mention, a few minutes)
+- When running into bot issues, messaging me (Stew#1902) should NOT be the first thing you shall do. Please stick to this documentation, ask Knights help, and if your question still wasn't answered, only then contact me. Even though client support is partially my job, I can't answer question all day.
+- This documentation may be outdated from time to time, and I will do my best to fully keep it up-to-date with new bot updates and releases. 
+- If you find any bugs or exploits in the bot, please contact me on Discord Stew#1902 and report it.
 
 ### Available roles
 Currently these are the roles that Zeus bot can manage: 2018, 2019, 2020, gulag, emperor, lord, knight, squire, noble, verified, modder, rep, sus. Each role has a ID assigned to
