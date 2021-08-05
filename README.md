@@ -1,7 +1,7 @@
 # Zeus-Bot-Info
 All information necessary for using Z E U S
 
-(Last updated on Match 4th 2021)
+(Last updated on August 5th 2021)
 
 ### Basic Info
 Z E U S is a custom discord bot made for Olympus server network. 
@@ -42,6 +42,17 @@ Permission level of each role allows to have a hierarchy system as mentioned abo
 ### !getUser \[mention / discord user ID]
 !getUser retrieves mention user from the database (if user is saved in the database) and shows roles that mentioned user has in the database.
 
+## +ban \[mention / discord user ID]
+Bans the user in all servers from the config.
+
+## -ban \[mention / discord user ID]
+Unbans the user in all servers from the config.
+
+### !purge
+Purges messages in channel. Two argument templates are allowed:
+- !purge \[number] - fetches last 100 messages and removes \[number] of messages in this channel (3 <= number <= 100)
+- !purge \[mention / discord user ID] \[number] - fetches last 100 messages, gets messages from the specifies user and removes last \[number] of messages from the fetches ones
+
 ### + / - commands
 Role assignment is main bot functionality. This command fully depends on role properties so make sure to read the **Role structure** paragraph above.
 
@@ -61,7 +72,7 @@ If command passed all tests, bots adds the user to the database if user wasn't p
 - If a role is modified on master server, bot will automatically update it on all children servers
 - If a role is assigned through Discord interface, bot will delete the role from this user and identify it as "accidental" role assignment
 - !help command - A true revolution in bot developing - sends information about Zeus Bot.
-- Whenever a user message contains "crazymodder", bot pays respect to Crazy Modder and sends "you will be remembered" message
+- Whenever a user message contains "where" and "migi", bot sends an informative message about how to find migi 
 
 ### Important notes
 - Bot is not executing commands instantly, some commands may take up to 2 minutes to execute. Command runtime may increase as the bot grows. Please have patience when executing commands, spamming commands will NOT speed up command execution time, but can cause bot traffic overflow, temporary freezes or errors.
